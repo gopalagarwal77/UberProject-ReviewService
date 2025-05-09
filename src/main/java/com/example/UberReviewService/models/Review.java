@@ -1,35 +1,36 @@
 package com.example.UberReviewService.models;
 
 import jakarta.persistence.*;
+import lombok.*;
+
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.Date;
 
+@Setter
+@Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+
 @Entity
 @Table(name="bookingReview") // creates a new table with name="bookingReview"
-public class Review {
+public class Review extends  BaseModel{
 
-    @Id  // this annotation makes the id property a primary key of our table
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // this id property is not going to be filled by user identity means auto incremented
-    Long id;
+
 
     @Column(nullable=false)
-    String content;
+    private String content;
 
     Double rating;
 
-    @Column(nullable=false)
-    @Temporal(TemporalType.TIMESTAMP)   // this annotation tells spring about the format of Date object to be stored i.e Date /Time ? Timestamp
-    @CreatedDate         // this annotation tells spring that only handle it for object creation
-    Date createdAt;
 
-    @Column(nullable=false)
-    @Temporal(TemporalType.TIMESTAMP)
-    @LastModifiedDate    // this annotation tells spring that only handle it for object update
-    Date updatedAt;
-
-
+    @Override
+    public String toString(){
+        return "Review" + " " + this.content + " "+ this.rating +" " +this.createdAt ;
+    }
 
 
 }
