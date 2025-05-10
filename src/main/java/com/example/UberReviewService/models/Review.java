@@ -16,7 +16,8 @@ import java.util.Date;
 @AllArgsConstructor
 
 @Entity
-@Table(name="bookingReview") // creates a new table with name="bookingReview"
+@Table(name="booking_Review") // creates a new table with name="bookingReview"
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Review extends  BaseModel{
 
 
