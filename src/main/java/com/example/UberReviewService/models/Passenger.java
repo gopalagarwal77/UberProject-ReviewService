@@ -1,6 +1,5 @@
 package com.example.UberReviewService.models;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import lombok.*;
@@ -14,16 +13,10 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Driver extends  BaseModel{
-
+public class Passenger extends  BaseModel{
     private String name;
 
-    @Column(nullable = false , unique = true)
-
-    private String licenseNumber;
-
-    @OneToMany(mappedBy = "driver")
-    private ArrayList<Booking> bookings = new ArrayList<>();
-
+    @OneToMany(mappedBy = "passenger")
+   private List<Booking> bookings = new ArrayList<>();
 
 }
