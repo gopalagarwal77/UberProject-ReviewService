@@ -70,8 +70,8 @@ public class ReviewService implements CommandLineRunner {
 //        }
 //           Optional<Driver> d = driverRepository.rawfindByIdAndLicenseNumber(1L,"DL121212");
 //            System.out.print(d.get().getName());
-        Optional<Driver> d = driverRepository.hqlfindByIdAndLicenseNumber(1L,"DL121212");
-        System.out.print(d.get().getName());
+     //   Optional<Driver> d = driverRepository.hqlfindByIdAndLicenseNumber(1L,"DL121212");
+     //   System.out.print(d.get().getName());
 
     }
 }
