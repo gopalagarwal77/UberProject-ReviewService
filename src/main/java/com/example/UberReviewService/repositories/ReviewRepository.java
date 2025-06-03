@@ -24,8 +24,8 @@ public interface ReviewRepository extends JpaRepository<Review,Long>{
     @Query("select r from Booking b inner join Review r where b.id= :bookingId")
     Review findByBookingId(long bookingId);
 
-    @Query("select new com.example.UberReviewService.repositories() from Booking b inner join Passenger p inner join Driver d")
-    custom findDriverPassengerReviewByBookingId(long bookingId);
+//    @Query("select new com.example.UberReviewService.repositories() from Booking b inner join Passenger p inner join Driver d")
+//    custom findDriverPassengerReviewByBookingId(long bookingId);
 
 }
 
