@@ -27,10 +27,15 @@ public class Review extends  BaseModel{
 
     Double rating;
 
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(nullable = false)
+    private Booking booking;    // review is a entity so we have to use the OnetoOne annotation
+    // we have defined a 1:1 relationship between booking and review
+
 
     @Override
     public String toString(){
-        return "Review" + " " + this.content + " "+ this.rating +" " +this.createdAt ;
+        return "Review" + " " + this.content + " "+ this.rating +" " +"booking:" + this.booking.getId() + "  " +this.createdAt ;
     }
 
 

@@ -3,7 +3,7 @@ package com.example.UberReviewService.services;
 import com.example.UberReviewService.models.Review;
 import com.example.UberReviewService.repositories.ReviewRepository;
 import org.springframework.stereotype.Service;
-
+import jakarta.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,5 +37,21 @@ public class ReviewServiceImp implements ReviewService{
             return false;
         }
 
+    }
+
+    public Review publishReview(Review review){
+          reviewRepository.save(review);
+        return review;
+    }
+
+    public Review updateReview(long id ,Review newReviewData){
+        Review review = this.reviewRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+        if(newReviewData.getRating()!=null){
+            review.setRating(newReviewData.getRating());
+        }
+        if(newReviewData.getContent() != null){
+            review.setContent(newReviewData.getContent());
+        }
+        return this.reviewRepository.save(review);
     }
 }
